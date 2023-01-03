@@ -20,13 +20,9 @@ import com.example.reto.entity.Affiliates;
 import com.example.reto.entity.Appointments;
 import com.example.reto.service.AppointmentsService;
 
-/**
- * Controlador que manipula el flujo de los servicios rest del microservicio de Citas
- *
- */
 
 @RestController
-@RequestMapping ("/appoinments")
+@RequestMapping ("/appointments")
 public class AppoinmentsController {
 	
 	@Autowired
@@ -65,11 +61,11 @@ public class AppoinmentsController {
 	
 	
 	
-	@PutMapping
-	public ResponseEntity<?> updateAppointment(@RequestBody Appointments appointment){
+	@PutMapping ("/{id}")
+	public ResponseEntity<?> updateAppointment(@PathVariable ("id") int id,@RequestBody Appointments appointment){
 		
 		try {
-			Appointments updatedAppointment= this.appoinmentsServiceImpl.updateAppointment(appointment);
+			Appointments updatedAppointment= this.appoinmentsServiceImpl.updateAppointment(id, appointment);
 			return ResponseEntity.status(HttpStatus.CREATED).body(updatedAppointment);
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();

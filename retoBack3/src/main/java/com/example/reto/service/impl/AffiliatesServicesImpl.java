@@ -43,8 +43,23 @@ public class AffiliatesServicesImpl implements AffiliatesService {
 	}
 	
 	@Override
-	public Affiliates updateAffiliate(Affiliates affiliate) {
-		return this.affiliatesRepository.save(affiliate);
+	public Affiliates updateAffiliate(int idAffiliate,Affiliates affiliate) {
+		
+		Affiliates existingAffiliate = affiliatesRepository.findById(idAffiliate).get();
+		
+		if (affiliate.getName()!=null) {
+			existingAffiliate.setName(affiliate.getName());
+		}
+		
+		if (affiliate.getAge()!=null) {
+			existingAffiliate.setAge(affiliate.getAge());
+		}
+		
+		if (affiliate.getMail()!=null) {
+			existingAffiliate.setMail(affiliate.getMail());
+		}
+		
+		return this.affiliatesRepository.save(existingAffiliate);
 	}
 	
 	@Override

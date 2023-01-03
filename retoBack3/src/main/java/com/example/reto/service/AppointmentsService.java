@@ -17,7 +17,7 @@ public interface AppointmentsService {
 	
 	Appointments saveAppointment(Appointments appointment);
 
-	Appointments updateAppointment (Appointments appointment);
+	Appointments updateAppointment (int id, Appointments appointment);
 		
 	void deleteAppointment (int id);
 	

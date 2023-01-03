@@ -29,7 +29,7 @@ public class Affiliates {
 	private String name;
 	
 	@Column(name= "age")
-	private int age;
+	private String age;
 	
 	@Column(name= "mail")
 	private String mail;
@@ -38,7 +38,7 @@ public class Affiliates {
 		super();
 	}
 
-	public Affiliates(int idAffiliate, String name, int age, String mail) {
+	public Affiliates(int idAffiliate, String name, String age, String mail) {
 		super();
 		this.idAffiliate = idAffiliate;
 		this.name = name;
@@ -62,11 +62,11 @@ public class Affiliates {
 		this.name = name;
 	}
 
-	public int getAge() {
+	public String getAge() {
 		return age;
 	}
 
-	public void setAge(int age) {
+	public void setAge(String age) {
 		this.age = age;
 	}
 

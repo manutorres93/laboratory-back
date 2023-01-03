@@ -76,10 +76,11 @@ class AffiliatesControllerTest {
 	void testActualizarAffiliate() {
 		
 		Affiliates affiliates= new Affiliates();
+		int numero=1;
 		
-		when(affiliatesServiceMock.updateAffiliate(affiliates)).thenReturn(affiliates);
+		when(affiliatesServiceMock.updateAffiliate(numero,affiliates)).thenReturn(affiliates);
 		
-		var response = affiliatesTest.updateAffiliate(affiliates);
+		var response = affiliatesTest.updateAffiliate(numero,affiliates);
 		Assertions.assertEquals(HttpStatus.CREATED, response.getStatusCode());
 	}
 	
@@ -87,10 +88,12 @@ class AffiliatesControllerTest {
 	void testActualizarAffiliateExcepcion() {
 		
 		Affiliates affiliates= new Affiliates();
+		int numero=1;
+		int numero2=2;
 		
-		when(affiliatesServiceMock.updateAffiliate(affiliates)).thenReturn(affiliates);
+		when(affiliatesServiceMock.updateAffiliate(numero,affiliates)).thenReturn(affiliates);
 		
-		var response = affiliatesTest.updateAffiliate(null);
+		var response = affiliatesTest.updateAffiliate(numero2, affiliates);
 		Assertions.assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
 	}
 	

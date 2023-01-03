@@ -54,11 +54,11 @@ public class AffiliatesController {
 	
 	
 	
-	@PutMapping
-	public ResponseEntity<?> updateAffiliate(@RequestBody Affiliates affiliates){
+	@PutMapping("/{idAffiliate}")
+	public ResponseEntity<?> updateAffiliate(@PathVariable ("idAffiliate") int idAffiliate,@RequestBody Affiliates affiliates){
 		
 		try {
-			Affiliates updatedAffiliate= this.affiliatesServiceImlp.updateAffiliate(affiliates);
+			Affiliates updatedAffiliate= this.affiliatesServiceImlp.updateAffiliate(idAffiliate,affiliates);
 			return ResponseEntity.status(HttpStatus.CREATED).body(updatedAffiliate);
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
@@ -66,7 +66,7 @@ public class AffiliatesController {
 		
 		}
 	
-	//@DeleteMapping
+	
 	@RequestMapping (value ="{idAffiliate}", method = RequestMethod.DELETE)
 	public ResponseEntity<?> deleteAffiliate(@PathVariable int idAffiliate){
 		

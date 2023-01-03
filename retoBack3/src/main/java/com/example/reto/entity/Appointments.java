@@ -8,6 +8,8 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import org.springframework.format.annotation.DateTimeFormat;
 import com.fasterxml.jackson.annotation.JsonFormat;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -41,13 +43,13 @@ public class Appointments {
 	@Column (name="hora_cita")
 	private LocalTime hora;
 	
-	@ManyToOne (fetch = FetchType.EAGER/*,  cascade = CascadeType.MERGE*/)
+	@ManyToOne (fetch = FetchType.EAGER,  cascade = CascadeType.ALL)
 	@JoinColumn (name ="idTest")
 	//@JsonIncludeProperties ({"hibernateLazyInitializer", "handler"})
 	private TestLab idTest;
 	
 	
-	@ManyToOne(fetch = FetchType.EAGER/*, cascade = CascadeType.MERGE*/)
+	@ManyToOne(fetch = FetchType.EAGER/*, cascade = CascadeType.ALL*/)
 	@JoinColumn (name="idAffiliate")
 	//@JsonIncludeProperties ({"hibernateLazyInitializer", "handler"})
 	private Affiliates idAffiliate;

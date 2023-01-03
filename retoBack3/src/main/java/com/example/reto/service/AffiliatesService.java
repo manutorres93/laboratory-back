@@ -14,7 +14,7 @@ public interface AffiliatesService {
 	
 	Affiliates saveAffiliate(Affiliates affiliate);
 		
-	Affiliates updateAffiliate (Affiliates affiliate);
+	Affiliates updateAffiliate (int idAffiliate,Affiliates affiliate);
 		
 	void deleteAffiliate (int idAffiliate);
 

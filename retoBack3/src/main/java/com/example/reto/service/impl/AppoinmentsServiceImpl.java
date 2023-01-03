@@ -35,13 +35,32 @@ public class AppoinmentsServiceImpl implements AppointmentsService {
 	
 	@Override
 	public Appointments saveAppointment(Appointments appointment) {
+				
 		return this.appoinmentsRepository.save(appointment);
 		
 	}
 
 	@Override
-	public Appointments updateAppointment(Appointments appointment) {		
-		return this.appoinmentsRepository.save(appointment);
+	public Appointments updateAppointment(int id, Appointments appointment) {		
+		Appointments existingAppointment = appoinmentsRepository.findById(id).get();
+		
+		if (appointment.getDate()!= null) {
+			existingAppointment.setDate(appointment.getDate());
+		}
+		
+		if (appointment.getHora()!= null) {
+			existingAppointment.setHora(appointment.getHora());
+		}
+		
+		if (appointment.getIdAffiliate()!= null) {
+			existingAppointment.setIdAffiliate(appointment.getIdAffiliate());
+		}
+		
+		if (appointment.getIdTest()!= null) {
+			existingAppointment.setIdTest(appointment.getIdTest());
+		}
+		
+		return this.appoinmentsRepository.save(existingAppointment);
 	}
 
 	@Override

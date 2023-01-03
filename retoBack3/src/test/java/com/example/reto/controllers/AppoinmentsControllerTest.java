@@ -83,17 +83,21 @@ class AppoinmentsControllerTest {
 	void testActualizarAppoinment() {
 
 		Appointments appoinment= new Appointments();
-		when (appoinmentServiceMock.updateAppointment(appoinment)).thenReturn(appoinment);		
-		var response = appoinmentsTest.updateAppointment(appoinment);
+		int numero=1;
+		
+		when (appoinmentServiceMock.updateAppointment(numero,appoinment)).thenReturn(appoinment);		
+		var response = appoinmentsTest.updateAppointment(numero,appoinment);
 		Assertions.assertEquals(HttpStatus.CREATED, response.getStatusCode());
 	}
 	
 	@Test
 	void testActualizarAppoinmentExcepcion() {
 
-		Appointments appoinment= new Appointments();
-		when (appoinmentServiceMock.updateAppointment(appoinment)).thenReturn(appoinment);		
-		var response = appoinmentsTest.updateAppointment(null);
+		Appointments appointment= new Appointments();
+		int numero=1;
+		int numero2=2;
+		when (appoinmentServiceMock.updateAppointment(numero,appointment)).thenReturn(appointment);		
+		var response = appoinmentsTest.updateAppointment(numero2,appointment);
 		Assertions.assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
 	}
 	
