@@ -55,10 +55,10 @@ public class TestController {
 		}
 	
 	
-	@PutMapping
-	public ResponseEntity<?> updateTest(@RequestBody TestLab test){
+	@PutMapping ("/{idTest}")
+	public ResponseEntity<?> updateTest(@PathVariable ("idTest") int idTest,@RequestBody TestLab test){
 		try {
-			TestLab updatedTest= this.testServiceImpl.updateTest(test);
+			TestLab updatedTest= this.testServiceImpl.updateTest(idTest, test);
 			return ResponseEntity.status(HttpStatus.CREATED).body(updatedTest);
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();

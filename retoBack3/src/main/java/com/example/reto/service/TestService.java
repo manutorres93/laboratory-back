@@ -13,7 +13,7 @@ public interface TestService {
 	
 	TestLab saveTest(TestLab test);
 	
-	TestLab updateTest (TestLab test);
+	TestLab updateTest (int idTest,TestLab test);
 	
 	void deleteTest (int id);
 	

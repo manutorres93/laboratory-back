@@ -69,10 +69,11 @@ class TestControllerTest {
 	@Test
 	void testActualizarTest() {
 		TestLab test= new TestLab();
+		int numero=1;
 		
-		when(testServiceMock.updateTest(test)).thenReturn(test);
+		when(testServiceMock.updateTest(numero, test)).thenReturn(test);
 		
-		var response = testTest.updateTest(test);
+		var response = testTest.updateTest(numero,test);
 		Assertions.assertEquals(HttpStatus.CREATED, response.getStatusCode());
 	}
 	
@@ -80,10 +81,11 @@ class TestControllerTest {
 	void testActualizarTestExcepcion() {
 		
 		TestLab test= new TestLab();
+		int numero=1;
+		int numero2=2;
+		when(testServiceMock.updateTest(numero,test)).thenReturn(test);
 		
-		when(testServiceMock.updateTest(test)).thenReturn(test);
-		
-		var response = testTest.updateTest(null);
+		var response = testTest.updateTest(numero2, test);
 		Assertions.assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
 	}
 	
