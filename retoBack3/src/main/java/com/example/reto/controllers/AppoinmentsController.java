@@ -7,6 +7,7 @@ package com.example.reto.controllers;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -85,22 +86,32 @@ public class AppoinmentsController {
 		}
 		}
 		
-	@RequestMapping (value=  "/idAffiliate/{idAffiliates}", method = RequestMethod.GET)
-	public ResponseEntity<?>getByIdAffiliate (@PathVariable ("idAffiliates")Affiliates idAffiliates){
-	//	try {
-			List<Appointments> appointmentByID= this.appoinmentsServiceImpl.findByIdAffiliate(idAffiliates);
-			return ResponseEntity.ok(appointmentByID);
-//		} catch (Exception e) {
-//			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();}
-//		}
-//		List<Appoinments> citasPorAfiliado= this.appoinmentsServiceImpl.findByIdAffiliate(idAffiliates);
-//		if (citasPorAfiliado.isEmpty()) {
-//			return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
-//		}else {
+	@GetMapping ("/idAffiliate/{idAffiliates}")
+	//@RequestMapping (value=  "/idAffiliate/{idAffiliates}", method = RequestMethod.GET)
+	public ResponseEntity <List<Appointments>>getByIdAffiliate (@PathVariable ("idAffiliates")Affiliates idAffiliates){
+		
+		return new ResponseEntity <List<Appointments>>(this.appoinmentsServiceImpl.findByIdAffiliate(idAffiliates), HttpStatus.OK);
+//	//	try {
+//			List<Appointments> appointmentByID= this.appoinmentsServiceImpl.findByIdAffiliate(idAffiliates);
+//	//		return ResponseEntity.ok(appointmentByID);
+////		} catch (Exception e) {
+////			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();}
+////		}
+////		List<Appoinments> citasPorAfiliado= this.appoinmentsServiceImpl.findByIdAffiliate(idAffiliates);
+////		if (citasPorAfiliado.isEmpty()) {
+////			return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+////		}else {
+////		
+////		return ResponseEntity.ok(citasPorAfiliado);
+////		}
 //		
-//		return ResponseEntity.ok(citasPorAfiliado);
+//		if (appointmentByID !=null) {
+//			
+//			return new ResponseEntity<List<Appointments>> (this.appoinmentsServiceImpl.findByIdAffiliate(idAffiliates), HttpStatus.OK);
 //		}
 //		
+//		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+////		
 	}
 	
 	

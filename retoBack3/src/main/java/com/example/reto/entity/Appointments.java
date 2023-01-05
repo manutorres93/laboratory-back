@@ -43,7 +43,7 @@ public class Appointments {
 	@Column (name="hora_cita")
 	private LocalTime hora;
 	
-	@ManyToOne (fetch = FetchType.EAGER,  cascade = CascadeType.ALL)
+	@ManyToOne (fetch = FetchType.EAGER /*, cascade = CascadeType.ALL*/)
 	@JoinColumn (name ="idTest")
 	//@JsonIncludeProperties ({"hibernateLazyInitializer", "handler"})
 	private TestLab idTest;
